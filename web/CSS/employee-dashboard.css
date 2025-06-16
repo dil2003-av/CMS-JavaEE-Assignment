@@ -1,0 +1,198 @@
+/* Reset & base */
+body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: linear-gradient(to right, #f9fbff, #e9f1ff);
+    color: #333;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 30px auto;
+    background: #ffffff;
+    border-radius: 16px;
+    padding: 30px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+}
+
+/* Navbar */
+.navbar {
+    display: flex;
+    justify-content: flex-end;
+    gap: 20px;
+    margin-bottom: 30px;
+}
+
+.navbar a {
+    text-decoration: none;
+    font-weight: 600;
+    color: #007bff;
+    background-color: #e3f2fd;
+    padding: 10px 16px;
+    border-radius: 25px;
+    transition: 0.3s;
+}
+
+.navbar a:hover {
+    background-color: #007bff;
+    color: #fff;
+}
+
+/* Headings */
+h2, h3 {
+    color: #1e3a8a;
+    margin-bottom: 15px;
+}
+
+/* Form styling */
+form {
+    background-color: #f1f5f9;
+    padding: 25px;
+    border-radius: 12px;
+    margin-bottom: 40px;
+    box-shadow: 0 0 10px rgba(0, 123, 255, 0.1);
+}
+
+label {
+    font-weight: 600;
+    margin-top: 10px;
+    display: block;
+}
+
+input, select, textarea {
+    width: 100%;
+    padding: 10px;
+    margin-top: 5px;
+    margin-bottom: 20px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    font-size: 14px;
+}
+
+button {
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    padding: 12px 20px;
+    border-radius: 25px;
+    font-size: 15px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+button:hover {
+    background-color: #0056b3;
+}
+
+/* Table styling */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 0 10px rgba(0,0,0,0.05);
+    background-color: #fff;
+}
+
+th, td {
+    padding: 14px 12px;
+    border-bottom: 1px solid #e0e0e0;
+    text-align: left;
+}
+
+th {
+    background-color: #007bff;
+    color: #fff;
+    text-transform: uppercase;
+    font-size: 13px;
+}
+
+tr:hover {
+    background-color: #f1f1f1;
+}
+
+/* Action buttons */
+.action-btns form {
+    display: inline;
+}
+
+.edit-btn, .delete-btn, .view-btn {
+    border: none;
+    padding: 8px 12px;
+    border-radius: 20px;
+    color: white;
+    font-weight: 600;
+    cursor: pointer;
+    margin-right: 5px;
+    font-size: 13px;
+    transition: 0.3s;
+}
+
+.edit-btn {
+    background-color: #28a745;
+}
+
+.edit-btn:hover {
+    background-color: #218838;
+}
+
+.delete-btn {
+    background-color: #dc3545;
+}
+
+.delete-btn:hover {
+    background-color: #c82333;
+}
+
+.view-btn {
+    background-color: #17a2b8;
+}
+
+.view-btn:hover {
+    background-color: #138496;
+}
+
+/* Responsive */
+@media screen and (max-width: 768px) {
+    .navbar {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    table, thead, tbody, th, td, tr {
+        display: block;
+    }
+
+    th {
+        display: none;
+    }
+
+    td {
+        position: relative;
+        padding-left: 50%;
+        border: none;
+        border-bottom: 1px solid #eee;
+    }
+
+    td:before {
+        position: absolute;
+        top: 10px;
+        left: 10px;
+        font-weight: bold;
+        color: #888;
+        white-space: nowrap;
+    }
+
+    td:nth-of-type(1):before { content: "ID"; }
+    td:nth-of-type(2):before { content: "Title"; }
+    td:nth-of-type(3):before { content: "Dept"; }
+    td:nth-of-type(4):before { content: "Priority"; }
+    td:nth-of-type(5):before { content: "Status"; }
+    td:nth-of-type(6):before { content: "Assigned To"; }
+    td:nth-of-type(7):before { content: "Remarks"; }
+    td:nth-of-type(8):before { content: "Created At"; }
+    td:nth-of-type(9):before { content: "Actions"; }
+}
