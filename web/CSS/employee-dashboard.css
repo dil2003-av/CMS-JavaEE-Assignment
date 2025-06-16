@@ -97,11 +97,25 @@ table {
     background-color: #fff;
 }
 
+td {
+    position: relative;
+    padding-left: 50%;
+    border: none;
+    border-bottom: 1px solid #eee;
+    min-height: 120px; /* Add height space */
+}
+
 th, td {
     padding: 14px 12px;
     border-bottom: 1px solid #e0e0e0;
     text-align: left;
 }
+td.action-btns {
+    min-width: 100px;
+    word-break: break-word;
+    overflow-wrap: break-word;
+}
+
 
 th {
     background-color: #007bff;
@@ -114,22 +128,34 @@ tr:hover {
     background-color: #f1f1f1;
 }
 
+
+
+
+
 /* Action buttons */
-.action-btns form {
-    display: inline;
+.action-btns {
+    display: flex;
+    justify-content: center;
+    gap: 8px;
 }
 
+.action-btns form {
+    margin: 0;
+}
+
+
 .edit-btn, .delete-btn, .view-btn {
-    border: none;
-    padding: 8px 12px;
+    min-width: 60px;
+    padding: 5px 10px;
     border-radius: 20px;
     color: white;
     font-weight: 600;
     cursor: pointer;
-    margin-right: 5px;
-    font-size: 13px;
+    font-size: 12px;
     transition: 0.3s;
+    text-align: center;
 }
+
 
 .edit-btn {
     background-color: #28a745;
@@ -154,6 +180,8 @@ tr:hover {
 .view-btn:hover {
     background-color: #138496;
 }
+
+
 
 /* Responsive */
 @media screen and (max-width: 768px) {
