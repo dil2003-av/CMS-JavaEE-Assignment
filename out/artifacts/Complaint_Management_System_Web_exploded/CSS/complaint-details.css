@@ -1,0 +1,31 @@
+/* complaint-details.css */
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #f5f7fa;
+    color: #333;
+    margin: 20px;
+}
+
+h2 {
+    color: #007bff;
+    margin-bottom: 20px;
+    border-bottom: 2px solid #007bff;
+    padding-bottom: 5px;
+    width: fit-content;
+}
+
+p {
+    background-color: #ffffff;
+    padding: 10px 15px;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgb(0 0 0 / 0.1);
+    margin-bottom: 12px;
+    font-size: 16px;
+}
+
+strong {
+    color: #555;
+    display: inline-block;
+    width: 120px;
+}

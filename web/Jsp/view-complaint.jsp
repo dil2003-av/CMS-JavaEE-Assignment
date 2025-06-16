@@ -13,7 +13,7 @@
   ComplaintDTO c = dao.getComplaintById(id);
 %>
 <h2>Complaint Details</h2>
-<link rel="stylesheet" href="../CSS/employee-dashboard.css">
+<link rel="stylesheet" href="../CSS/complaint-details.css">
 <p><strong>ID:</strong> <%= c.getComplaintId() %></p>
 <p><strong>Title:</strong> <%= c.getTitle() %></p>
 <p><strong>Description:</strong> <%= c.getDescription() %></p>
