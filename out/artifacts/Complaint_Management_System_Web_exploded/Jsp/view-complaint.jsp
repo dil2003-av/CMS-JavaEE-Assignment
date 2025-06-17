@@ -20,6 +20,6 @@
 <p><strong>Department:</strong> <%= c.getDepartment() %></p>
 <p><strong>Priority:</strong> <%= c.getPriority() %></p>
 <p><strong>Status:</strong> <%= c.getStatus() %></p>
-<p><strong>Assigned To:</strong> <%= c.getAssignedToName() != null ? c.getAssignedToName() : "-" %></p>
-<p><strong>Remarks:</strong> <%= c.getAdminRemarks() != null ? c.getAdminRemarks() : "-" %></p>
+<%--<p><strong>Assigned To:</strong> <%= c.getAssignedToName() != null ? c.getAssignedToName() : "-" %></p>--%>
+<%--<p><strong>Remarks:</strong> <%= c.getAdminRemarks() != null ? c.getAdminRemarks() : "-" %></p>--%>
 <p><strong>Created At:</strong> <%= c.getCreatedAt() %></p>

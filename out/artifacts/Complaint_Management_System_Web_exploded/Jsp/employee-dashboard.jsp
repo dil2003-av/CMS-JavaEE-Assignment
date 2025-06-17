@@ -37,6 +37,19 @@
     }
 </script>
 
+<body>
+<%
+    String updateStatus = request.getParameter("update");
+    if ("success".equals(updateStatus)) {
+%>
+<script>
+    alert("Update successful!");
+</script>
+<%
+    }
+%>
+
+
 <div class="container">
     <div class="navbar">
         <a href="../Jsp/employee-dashboard.jsp">Home</a>

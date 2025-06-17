@@ -36,7 +36,8 @@ public class EditComplaintServlet extends HttpServlet {
             boolean isUpdated = dao.updateComplaint(complaint);
 
             if (isUpdated) {
-                resp.sendRedirect(req.getContextPath() + "/Jsp/employee-dashboard.jsp");
+                // After successfully updating complaint
+                resp.sendRedirect("Jsp/employee-dashboard.jsp?update=success");
             } else {
                 req.setAttribute("error", "Failed to update complaint.");
                 req.getRequestDispatcher("../Jsp/edit-complaint.jsp?id=" + complaintId).forward(req, resp);
