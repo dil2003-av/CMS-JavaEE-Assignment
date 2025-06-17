@@ -6,13 +6,14 @@
 </head>
 <body>
 
+
 <%
     String signupStatus = request.getParameter("signup");
     if ("success".equals(signupStatus)) {
 %>
-<div style="color: green; font-weight: bold;">
-    Signup successful! Please login now.
-</div>
+<script>
+    alert("Signup successful! Please login now.");
+</script>
 <%
     }
 %>
@@ -24,5 +25,6 @@
     <input type="submit" value="Login">
     <p>Don't have an account? <a href="signup.jsp">Sign up here</a></p>
 </form>
+
 </body>
 </html>
