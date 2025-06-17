@@ -1,17 +1,24 @@
-function validateLoginForm() {
-    const email = document.forms["loginForm"]["email"].value.trim();
-    const password = document.forms["loginForm"]["password"].value.trim();
+$(document).ready(function () {
+    $('form').on('submit', function (e) {
+        let email = $('input[name="email"]').val().trim();
+        let password = $('input[name="password"]').val().trim();
+        let isValid = true;
 
-    if (email === "" || password === "") {
-        alert("⚠️ Please fill out both email and password fields.");
-        return false;
+        if (!validateEmail(email)) {
+            alert("Please enter a valid email.");
+            isValid = false;
+        } else if (password === '') {
+            alert("Password is required.");
+            isValid = false;
+        }
+
+        if (!isValid) {
+            e.preventDefault(); // prevent form submission
+        }
+    });
+
+    function validateEmail(email) {
+        let regex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        return regex.test(email);
     }
-
-    const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    if (!emailPattern.test(email)) {
-        alert("⚠️ Please enter a valid email address.");
-        return false;
-    }
-
-    return true;
-}
+});

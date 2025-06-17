@@ -1,27 +1,33 @@
+$(document).ready(function () {
+    $('form').on('submit', function (e) {
+        let isValid = true;
 
+        let username = $('input[name="username"]').val().trim();
+        let password = $('input[name="password"]').val().trim();
+        let email = $('input[name="email"]').val().trim();
+        let role = $('select[name="role"]').val();
 
-function validateSignupForm() {
-    const form = document.forms["signupForm"];
-    const username = form["username"].value.trim();
-    const email = form["email"].value.trim();
-    const password = form["password"].value.trim();
-    const role = form["role"].value;
+        if (username === '') {
+            alert("Username is required.");
+            isValid = false;
+        } else if (password.length < 6) {
+            alert("Password must be at least 6 characters.");
+            isValid = false;
+        } else if (!validateEmail(email)) {
+            alert("Please enter a valid email.");
+            isValid = false;
+        } else if (!role) {
+            alert("Please select a role.");
+            isValid = false;
+        }
 
-    if (username === "" || email === "" || password === "" || role === "") {
-        alert("⚠️ All fields are required!");
-        return false;
+        if (!isValid) {
+            e.preventDefault(); // form eka submit wenne na
+        }
+    });
+
+    function validateEmail(email) {
+        let regex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        return regex.test(email);
     }
-
-    const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    if (!emailPattern.test(email)) {
-        alert("⚠️ Please enter a valid email address.");
-        return false;
-    }
-
-    if (password.length < 6) {
-        alert("⚠️ Password must be at least 6 characters long.");
-        return false;
-    }
-
-    return true;
-}
+});

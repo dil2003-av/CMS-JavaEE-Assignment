@@ -10,10 +10,11 @@
 <head>
     <title>Sign Up</title>
     <link rel="stylesheet" type="text/css" href="../CSS/signup.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="../JS/signup-validation.js"></script>
 </head>
 <body>
-<form action="${pageContext.request.contextPath}/SignupServlet" method="post"onsubmit="return validateSignupForm();">
+<form action="${pageContext.request.contextPath}/SignupServlet" method="post">
     <h2>User Registration</h2>
     <input type="text" name="username" placeholder="Full Name" required>
     <input type="password" name="password" placeholder="Password" required>

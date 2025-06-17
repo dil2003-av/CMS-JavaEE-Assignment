@@ -3,6 +3,7 @@
 <head>
     <title>User Login</title>
     <link rel="stylesheet" type="text/css" href="../CSS/login.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="../JS/login-validation.js"></script>
 </head>
 <body>
@@ -19,7 +20,7 @@
     }
 %>
 
-<form action="${pageContext.request.contextPath}/loginServlet" method="post" onsubmit="return validateLoginForm();">
+<form action="${pageContext.request.contextPath}/loginServlet" method="post">
     <h2>User Login</h2>
     <input type="email" name="email" placeholder="Enter your email" required>
     <input type="password" name="password" placeholder="Enter your password" required>
