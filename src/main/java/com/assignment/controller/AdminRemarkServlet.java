@@ -57,7 +57,6 @@ public class AdminRemarkServlet extends HttpServlet {
             return;
         }
 
-
         String contextPath = req.getContextPath();
         resp.sendRedirect(contextPath + "/Jsp/admin-dashboard.jsp");
     }

@@ -150,13 +150,16 @@
         <td><%= c.getAdminRemarks() != null ? c.getAdminRemarks() : "no" %></td>
         <td><%= c.getSubmittedBy() %></td>
         <td>
-            <% if (!"approve".equalsIgnoreCase(c.getStatus()) && !"decline".equalsIgnoreCase(c.getStatus())) { %>
+            <%
+                boolean isPending = !"approve".equalsIgnoreCase(c.getStatus()) && !"decline".equalsIgnoreCase(c.getStatus());
+            %>
+
+            <% if (isPending) { %>
             <form action="${pageContext.request.contextPath}/AdminRemarkServlet" method="post" style="display:inline;">
                 <input type="hidden" name="id" value="<%= c.getComplaintId() %>">
                 <textarea name="remark" placeholder="Write your response..." required></textarea>
                 <button class="btn-approve" name="action" value="approve">Approve</button>
                 <button class="btn-decline" name="action" value="decline">Decline</button>
-
             </form>
             <% } %>
 
@@ -164,9 +167,8 @@
                 <input type="hidden" name="id" value="<%= c.getComplaintId() %>">
                 <button class="btn-delete">Delete</button>
             </form>
-
-            </form>
         </td>
+
     </tr>
     <% } %>
     </tbody>

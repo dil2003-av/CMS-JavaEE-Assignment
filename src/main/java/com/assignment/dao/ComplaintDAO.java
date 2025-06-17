@@ -149,6 +149,9 @@ public class ComplaintDAO {
         complaint.setStatus(rs.getString("status"));
         complaint.setSubmittedBy(rs.getString("submitted_by"));
 
+        // ✅ Add this line to fix remark display
+        complaint.setAdminRemarks(rs.getString("admin_remarks"));
+
         Timestamp createdAt = rs.getTimestamp("created_at");
         if (createdAt != null) {
             complaint.setCreatedAt(createdAt.toLocalDateTime());
@@ -161,4 +164,5 @@ public class ComplaintDAO {
 
         return complaint;
     }
+
 }
