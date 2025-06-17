@@ -24,6 +24,12 @@
     <link rel="stylesheet" href="../CSS/employee-dashboard.css">
 </head>
 <body>
+<script>
+    function confirmDelete(form) {
+        return confirm("Are you sure you want to delete this complaint?");
+    }
+</script>
+
 <div class="container">
     <div class="navbar">
         <a href="../Jsp/employee-dashboard.jsp">Home</a>
@@ -109,13 +115,14 @@
                     <button class="edit-btn">✏️ Edit</button>
                 </form>
                 <% if ("Pending".equalsIgnoreCase(c.getStatus())) { %>
-                <form action="delete-complaint.jsp" method="post">
+                <form action="delete-complaint.jsp" method="post" onsubmit="return confirmDelete(this);">
                     <input type="hidden" name="id" value="<%= c.getComplaintId() %>">
                     <button class="delete-btn">🗑️ Delete</button>
                 </form>
                 <% } else { %>
                 <button class="delete-btn" disabled style="opacity:0.5;">🗑️ Delete</button>
                 <% } %>
+
             </td>
         </tr>
         <%
