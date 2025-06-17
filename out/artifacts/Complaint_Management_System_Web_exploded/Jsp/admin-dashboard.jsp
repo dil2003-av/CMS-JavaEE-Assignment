@@ -26,7 +26,7 @@
 <html>
 <head>
 
-    <div class="container">
+    <he class="container">
         <div class="navbar">
             <a href="../Jsp/employee-dashboard.jsp">Home</a>
             <a href="${pageContext.request.contextPath}/Jsp/login.jsp">Logout</a>
@@ -34,6 +34,7 @@
         </div>
 
     <title>View Complaints</title>
+
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -155,6 +156,23 @@
     </style>
 </head>
 <body>
+<%
+    String status = request.getParameter("status");
+    if ("approved".equals(status)) {
+%>
+<script>alert("✅ Complaint Approved Successfully!");</script>
+<%
+} else if ("declined".equals(status)) {
+%>
+<script>alert("❌ Complaint Declined Successfully!");</script>
+<%
+} else if ("deleted".equals(status)) {
+%>
+<script>alert("🗑️ Complaint Deleted Successfully!");</script>
+<%
+    }
+%>
+
 <h2>Welcome, Admin: <%= user.getName() %></h2>
 
 <table>
@@ -189,14 +207,18 @@
             <form action="${pageContext.request.contextPath}/AdminRemarkServlet" method="post" style="display:inline;">
                 <input type="hidden" name="id" value="<%= c.getComplaintId() %>">
                 <textarea name="remark" placeholder="Write your response..." required></textarea>
-                <button class="btn-approve" name="action" value="approve">Approve</button>
-                <button class="btn-decline" name="action" value="decline">Decline</button>
+                <button class="btn-approve" name="action" value="approve">✅ Approve</button>
+                <button class="btn-decline" name="action" value="decline">❌ Decline</button>
+
             </form>
             <% } %>
 
-            <form action="${pageContext.request.contextPath}/AdminDeleteComplaintServlet" method="post" style="display:inline;">
+            <form action="${pageContext.request.contextPath}/AdminDeleteComplaintServlet" method="post" style="display:inline;" onsubmit="return confirm('🗑️ Are you sure you want to delete this complaint?');">
                 <input type="hidden" name="id" value="<%= c.getComplaintId() %>">
-                <button class="btn-delete">Delete</button>
+                <button class="btn-delete">🗑️ Delete</button>
+            </form>
+
+
             </form>
         </td>
 

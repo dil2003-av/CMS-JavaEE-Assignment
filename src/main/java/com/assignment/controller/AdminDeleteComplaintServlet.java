@@ -56,6 +56,6 @@ public class AdminDeleteComplaintServlet extends HttpServlet {
         }
 
         String contextPath = req.getContextPath();
-        resp.sendRedirect(contextPath + "/Jsp/admin-dashboard.jsp");
+        resp.sendRedirect(contextPath + "/Jsp/admin-dashboard.jsp?status=deleted");
     }
 }

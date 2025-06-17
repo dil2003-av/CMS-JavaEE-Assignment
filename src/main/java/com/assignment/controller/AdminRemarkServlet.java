@@ -57,7 +57,15 @@ public class AdminRemarkServlet extends HttpServlet {
             return;
         }
 
-        String contextPath = req.getContextPath();
-        resp.sendRedirect(contextPath + "/Jsp/admin-dashboard.jsp");
+        if ("approve".equals(action)) {
+            String contextPath = req.getContextPath();
+            // Your approval logic here...
+            resp.sendRedirect(contextPath + "/Jsp/admin-dashboard.jsp?status=approved");
+        } else if ("decline".equals(action)) {
+            String contextPath = req.getContextPath();
+            // Your decline logic here...
+            resp.sendRedirect(contextPath + "/Jsp/admin-dashboard.jsp?status=declined");
+        }
+
     }
 }
