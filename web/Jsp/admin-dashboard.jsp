@@ -25,6 +25,14 @@
 
 <html>
 <head>
+
+    <div class="container">
+        <div class="navbar">
+            <a href="../Jsp/employee-dashboard.jsp">Home</a>
+            <a href="${pageContext.request.contextPath}/Jsp/login.jsp">Logout</a>
+            <a href="${pageContext.request.contextPath}/Jsp/employee-dashboard.jsp">Employee Dashboard</a>
+        </div>
+
     <title>View Complaints</title>
     <style>
         body {
@@ -32,6 +40,29 @@
             background-color: #f4f6f8;
             margin: 20px;
             color: #333;
+        }
+
+        /* Navbar */
+        .navbar {
+            display: flex;
+            justify-content: flex-end;
+            gap: 20px;
+            margin-bottom: 30px;
+        }
+
+        .navbar a {
+            text-decoration: none;
+            font-weight: 600;
+            color: #007bff;
+            background-color: #e3f2fd;
+            padding: 10px 16px;
+            border-radius: 25px;
+            transition: 0.3s;
+        }
+
+        .navbar a:hover {
+            background-color: #007bff;
+            color: #fff;
         }
         h2 {
             color: #2c3e50;

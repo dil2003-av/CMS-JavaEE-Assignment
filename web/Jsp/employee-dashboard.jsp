@@ -1,3 +1,10 @@
+<%--
+  Created by IntelliJ IDEA.
+  User: dilmi kaushalya
+  Date: 6/14/2025
+  Time: 1:58 PM
+  To change this template use File | Settings | File Templates.
+--%>
 <%@ page import="com.assignment.dao.ComplaintDAO" %>
 <%@ page import="com.assignment.model.ComplaintDTO" %>
 <%@ page import="com.assignment.model.UserDTO" %>
@@ -33,7 +40,8 @@
 <div class="container">
     <div class="navbar">
         <a href="../Jsp/employee-dashboard.jsp">Home</a>
-        <a href="${pageContext.request.contextPath}/logout.jsp">Logout</a>
+        <a href="${pageContext.request.contextPath}/Jsp/login.jsp">Logout</a>
+        <a href="${pageContext.request.contextPath}/Jsp/admin-dashboard.jsp">Admin Dashboard</a>
     </div>
 
     <h2>Welcome, Employee: <%= user.getName() %></h2>

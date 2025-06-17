@@ -118,8 +118,8 @@
       <th>Dept</th>
       <th>Priority</th>
       <th>Status</th>
-      <th>Assigned To</th>
-      <th>Remarks</th>
+<%--      <th>Assigned To</th>--%>
+<%--      <th>Remarks</th>--%>
       <th>Created At</th>
       <th>Actions</th>
     </tr>
@@ -135,8 +135,8 @@
       <td><%= c.getDepartment() %></td>
       <td><%= c.getPriority() %></td>
       <td><%= c.getStatus() %></td>
-      <td><%= c.getAssignedToName() != null ? c.getAssignedToName() : "-" %></td>
-      <td><%= c.getAdminRemarks() != null ? c.getAdminRemarks() : "-" %></td>
+<%--      <td><%= c.getAssignedToName() != null ? c.getAssignedToName() : "-" %></td>--%>
+<%--      <td><%= c.getAdminRemarks() != null ? c.getAdminRemarks() : "-" %></td>--%>
       <td><%= c.getCreatedAt() != null ? c.getCreatedAt() : "-" %></td>
       <td class="action-btns">
         <form action="edit-complaint.jsp" method="get">
