@@ -163,6 +163,7 @@
             <form action="${pageContext.request.contextPath}/AdminDeleteComplaintServlet" method="post" style="display:inline;">
                 <input type="hidden" name="id" value="<%= c.getComplaintId() %>">
                 <button class="btn-delete">Delete</button>
+            </form>
 
             </form>
         </td>

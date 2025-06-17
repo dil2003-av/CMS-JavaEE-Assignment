@@ -108,21 +108,22 @@ public class ComplaintDAO {
             throw new RuntimeException("Error updating complaint", e);
         }
     }
-    public void updateStatusAndRemark(String complaintId, String status, String remark) {
+    public boolean updateComplaintStatusAndRemark(ComplaintDTO complaint) {
         String sql = "UPDATE complaints SET status = ?, admin_remarks = ?, updated_at = NOW() WHERE complaint_id = ?";
-
         try (Connection con = DBConnection.getConnection();
              PreparedStatement ps = con.prepareStatement(sql)) {
-            ps.setString(1, status);
-            ps.setString(2, remark);
-            ps.setString(3, complaintId);
-            ps.executeUpdate();
-        } catch (Exception e) {
+
+            ps.setString(1, complaint.getStatus());
+            ps.setString(2, complaint.getAdminRemarks());
+            ps.setString(3, complaint.getComplaintId());
+
+            return ps.executeUpdate() > 0;
+
+        } catch (SQLException e) {
             e.printStackTrace();
+            return false;
         }
     }
-
-
 
     public boolean deleteComplaint(String complaintId) {
         String sql = "DELETE FROM complaints WHERE complaint_id = ?";

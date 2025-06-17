@@ -1,11 +1,12 @@
 package com.assignment.controller;
 
 import com.assignment.dao.ComplaintDAO;
+import com.assignment.model.ComplaintDTO;
+import com.assignment.model.UserDTO;
+
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
-import jakarta.servlet.http.HttpServlet;
-import jakarta.servlet.http.HttpServletRequest;
-import jakarta.servlet.http.HttpServletResponse;
+import jakarta.servlet.http.*;
 
 import java.io.IOException;
 
@@ -13,21 +14,51 @@ import java.io.IOException;
 public class AdminRemarkServlet extends HttpServlet {
 
     @Override
-    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException {
-        // Get parameters from form
-        String complaintId = request.getParameter("id");
-        String action = request.getParameter("action"); // approve or decline
-        String remark = request.getParameter("remark");
+    protected void doPost(HttpServletRequest req, HttpServletResponse resp)
+            throws ServletException, IOException {
 
-        // Null check and action type verification
-        if (complaintId != null && action != null && remark != null &&
-                (action.equalsIgnoreCase("approve") || action.equalsIgnoreCase("decline"))) {
-
-            ComplaintDAO dao = new ComplaintDAO();
-            dao.updateStatusAndRemark(complaintId, action, remark);
+        HttpSession session = req.getSession(false);
+        if (session == null) {
+            resp.sendRedirect("login.jsp");
+            return;
         }
 
-        // Redirect to admin dashboard after update
-        response.sendRedirect("../Jsp/admin-dashboard.jsp"); // ✅ Make sure this path is correct
+        UserDTO user = (UserDTO) session.getAttribute("user");
+        if (user == null || !"Admin".equals(user.getRole())) {
+            resp.sendRedirect("login.jsp");
+            return;
+        }
+
+        String complaintId = req.getParameter("id");
+        String remark = req.getParameter("remark");
+        String action = req.getParameter("action"); // approve or decline
+
+        if (complaintId == null || remark == null || action == null) {
+            String contextPath = req.getContextPath();
+            resp.sendRedirect(contextPath + "/Jsp/admin-dashboard.jsp");
+            return;
+        }
+
+        ComplaintDAO dao = new ComplaintDAO();
+        ComplaintDTO complaint = dao.getComplaintById(complaintId);
+
+        if (complaint != null) {
+            complaint.setAdminRemarks(remark);
+            complaint.setStatus(action);
+            boolean updated = dao.updateComplaintStatusAndRemark(complaint);
+            if (!updated) {
+                req.setAttribute("error", "Failed to update complaint.");
+                req.getRequestDispatcher("../Jsp/admin-dashboard.jsp").forward(req, resp);
+                return;
+            }
+        } else {
+            req.setAttribute("error", "Complaint not found.");
+            req.getRequestDispatcher("../Jsp/admin-dashboard.jsp").forward(req, resp);
+            return;
+        }
+
+
+        String contextPath = req.getContextPath();
+        resp.sendRedirect(contextPath + "/Jsp/admin-dashboard.jsp");
     }
 }
