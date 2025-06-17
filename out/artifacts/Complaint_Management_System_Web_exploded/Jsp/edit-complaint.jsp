@@ -141,7 +141,7 @@
 
         <button type="submit">Update Complaint</button>
     </form>
-    <a href="../Jsp/my-complaints.jsp">← Back to My Complaints</a>
+    <a href="../Jsp/my-complaints.jsp">← Back to Employee</a>
 </div>
 </body>
 </html>

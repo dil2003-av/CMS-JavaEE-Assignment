@@ -1,44 +1,59 @@
-/* admin-dashboard.css */
-
 body {
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    background-color: #f9fafb;
-    margin: 0;
-    padding: 20px;
-    color: #222;
+    font-family: Arial, sans-serif;
+    background-color: #f0f4f8;
+    color: #333;
+    margin: 20px;
 }
 
 h2 {
-    color: #007bff;
-    margin-bottom: 15px;
-}
-
-nav {
+    color: #2c3e50;
     margin-bottom: 20px;
 }
 
-nav a {
-    text-decoration: none;
-    color: #007bff;
-    font-weight: 600;
-    margin-right: 15px;
-    padding: 6px 12px;
-    border-radius: 4px;
-    transition: background-color 0.3s ease;
+table {
+    width: 100%;
+    border-collapse: collapse;
+    background-color: #fff;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    border-radius: 8px;
+    overflow: hidden;
 }
 
-nav a:hover {
-    background-color: #007bff;
+th, td {
+    padding: 12px 15px;
+    border-bottom: 1px solid #ddd;
+    text-align: left;
+}
+
+th {
+    background-color: #2980b9;
     color: white;
 }
 
-hr {
-    border: none;
-    border-top: 1px solid #ccc;
-    margin: 20px 0;
+tr:hover {
+    background-color: #f5faff;
 }
 
-p {
-    font-size: 16px;
-    line-height: 1.5;
+button {
+    padding: 6px 10px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-weight: 600;
+    margin-right: 5px;
+}
+
+button[name="action"][value="approve"] {
+    background-color: #27ae60;
+    color: white;
+}
+
+button[name="action"][value="decline"] {
+    background-color: #e74c3c;
+    color: white;
+}
+
+button[style*="darkred"] {
+    background-color: #c0392b;
+    color: white;
 }

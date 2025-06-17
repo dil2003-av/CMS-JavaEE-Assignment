@@ -10,6 +10,24 @@ import java.util.List;
 
 public class ComplaintDAO {
 
+    public List<ComplaintDTO> getAllComplaints() {
+        List<ComplaintDTO> complaints = new ArrayList<>();
+        String sql = "SELECT * FROM complaints ORDER BY created_at DESC";
+
+        try (Connection conn = DBConnection.getConnection();
+             PreparedStatement pstmt = conn.prepareStatement(sql);
+             ResultSet rs = pstmt.executeQuery()) {
+
+            while (rs.next()) {
+                complaints.add(mapResultSetToComplaint(rs));
+            }
+
+        } catch (SQLException e) {
+            throw new RuntimeException("Error fetching all complaints", e);
+        }
+        return complaints;
+    }
+
     public boolean createComplaint(ComplaintDTO complaint) {
         String sql = "INSERT INTO complaints (complaint_id, title, description, department, priority, status, submitted_by, created_at) VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
 
@@ -90,6 +108,21 @@ public class ComplaintDAO {
             throw new RuntimeException("Error updating complaint", e);
         }
     }
+    public void updateStatusAndRemark(String complaintId, String status, String remark) {
+        String sql = "UPDATE complaints SET status = ?, admin_remarks = ?, updated_at = NOW() WHERE complaint_id = ?";
+
+        try (Connection con = DBConnection.getConnection();
+             PreparedStatement ps = con.prepareStatement(sql)) {
+            ps.setString(1, status);
+            ps.setString(2, remark);
+            ps.setString(3, complaintId);
+            ps.executeUpdate();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+
 
     public boolean deleteComplaint(String complaintId) {
         String sql = "DELETE FROM complaints WHERE complaint_id = ?";
