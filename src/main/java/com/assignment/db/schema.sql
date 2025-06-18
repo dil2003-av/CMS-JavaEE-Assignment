@@ -31,5 +31,3 @@ CREATE TABLE complaints (
 );
 
 select * from complaints;
-
-
